@@ -1,5 +1,5 @@
 const express = require('express');
-const { registerUser, login, getAllUsers, getUserById, getUserByUUID, updateUserName } = require('../controllers/userController');
+const { registerUser, login, getAllUsers, getUserById, getUserByUUID, updateUserName, updateEmail } = require('../controllers/userController');
 const userRoute = express.Router();
 const cors = require('cors');
 
@@ -46,7 +46,7 @@ userRoute.post('/register' , registerUser)
  * /user/register:
  *  post:
  *      summary: Register a user
- *      tags: ["User Registration"]
+ *      tags: [User]
  *      requestBody: 
  *          required: true
  *          content:
@@ -71,7 +71,7 @@ userRoute.post('/login', login)
  * /user/login:
  *  post:
  *      summary: Login a user
- *      tags: ["User Login"]
+ *      tags: [User]
  *      requestBody: 
  *          required: true
  *          content:
@@ -99,7 +99,7 @@ userRoute.get('/getAllUsers' , getAllUsers)
  * /user/getAllUsers:
  *  get:
  *      summary: Get all users
- *      tags: ['Get all users']
+ *      tags: [User]
  *      responses:
  *          200:
  *              description: Got all the users successfully
@@ -119,7 +119,7 @@ userRoute.get('/getUserById/:_id' , getUserById)
  * @swagger
  * '/user/getUserById/{_id}':
  *   get:
- *     tags: ['Get user By ID']
+ *     tags: [User]
  *     summary: Find a user by its Id
  *     parameters:
  *      - name: _id
@@ -145,7 +145,7 @@ userRoute.get('/getUserByUUID/:uuid' , getUserByUUID)
  * @swagger
  * '/user/getUserByUUID/{uuid}':
  *   get:
- *     tags: ['Get user By UUID']
+ *     tags: [User]
  *     summary: Find a user by its uuid
  *     parameters:
  *      - name: uuid
@@ -174,7 +174,7 @@ userRoute.put('/updateUsername/:uuid/:username' , updateUserName )
  * @swagger
  * '/user/updateUsername/{uuid}/{username}':
  *      put:
- *          tags: ['Update username']
+ *          tags: [User]
  *          summary: Update username
  *          parameters:
  *              - name: uuid
@@ -188,6 +188,31 @@ userRoute.put('/updateUsername/:uuid/:username' , updateUserName )
  *          responses:
  *              200:
  *                  description: Successfully updated the username
+ *              404:
+ *                  description: User not found
+ *              500:
+ *                  description: Internal server error
+ *      
+ */
+userRoute.put('/updateEmail/:uuid/:email', updateEmail)
+/**
+ * @swagger
+ * '/user/updateEmail/{uuid}/{email}':
+ *      put:
+ *          tags: [User]
+ *          summary: Update email
+ *          parameters:
+ *              - name: uuid
+ *                in: path
+ *                description: the UUID of the user to be updated
+ *                required: true
+ *              - name: email
+ *                in: path
+ *                description: the email of the user to be updated
+ *                required: true
+ *          responses:
+ *              200:
+ *                  description: Successfully updated the email
  *              404:
  *                  description: User not found
  *              500:

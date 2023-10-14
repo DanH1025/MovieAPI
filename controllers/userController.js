@@ -163,6 +163,37 @@ const updateUserName = async (req, res)=>{
 }
 
 
+//update email
+const updateEmail = async (req, res)=>{
+  const {uuid , email} = req.params
+  try {
+    const exists = await user.findOne({uuid: uuid})
+    if(!exists){
+      return res.status(404).json({
+        message: 'User not found'
+      })
+    }
+    try {
+      const update = await user.updateOne({uuid: uuid}, {$set: {email: email}})
+      return res.status(200).json({
+        message: 'Successfully updated user email address',
+        payload: update
+      })
+    } catch (error) {
+      return res.status(500).json({
+        message: 'Internal Server Error',
+        error: error
+      })
+    }
+  } catch (error) {
+    return res.status(500).json({
+      message: 'Internal Server Error',
+      error: error
+    })
+  }
+}
+
+
 
 module.exports ={
     registerUser,
@@ -170,5 +201,6 @@ module.exports ={
     getAllUsers,
     getUserById,
     getUserByUUID,
-    updateUserName
+    updateUserName,
+    updateEmail
 }

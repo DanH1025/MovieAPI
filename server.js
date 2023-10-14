@@ -8,6 +8,7 @@ const connectDB = require('./db/db')
 
 //my routes
 const userRoute = require('./routes/userRoute')
+const movieRoute = require('./routes/movieRoute')
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(cors())
 
 //app uses routes
 app.use('/user', userRoute)
+app.use('/movie' , movieRoute)
 
 
 

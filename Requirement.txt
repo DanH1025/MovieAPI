@@ -7,6 +7,7 @@ User Management:
     User authentication (JWT or OAuth)
 
 Movie Information:
+    Add movies (POST)
     List of movies (GET)
     Movie details (GET)
     Movie search (GET)
