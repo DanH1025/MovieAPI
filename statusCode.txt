@@ -1,0 +1,39 @@
+200 OK: The request was successful, and the server is returning the requested data.
+
+201 Created: The request was successful, and the server has created a new resource as a result (e.g., after a POST request).
+
+204 No Content: The request was successful, but there is no additional data to send back (often used with DELETE requests).
+
+400 Bad Request: The request is invalid or malformed. The server cannot or will not process it.
+
+401 Unauthorized: The request requires authentication, and the user's credentials are either missing or invalid.
+
+403 Forbidden: The request is understood, but the server refuses to fulfill it. The user does not have permission to access the requested resource.
+
+404 Not Found: The requested resource or URL does not exist on the server.
+
+405 Method Not Allowed: The HTTP method used in the request (e.g., GET, POST) is not allowed for the requested resource.
+
+500 Internal Server Error: A generic error message indicating a problem with the server. It's typically used when no more specific message is suitable.
+
+502 Bad Gateway: The server, while acting as a gateway or proxy, received an invalid response from an upstream server.
+
+503 Service Unavailable: The server is temporarily unable to handle the request, usually because it is overloaded or undergoing maintenance.
+
+504 Gateway Timeout: The server, while acting as a gateway or proxy, did not receive a timely response from an upstream server or some other auxiliary server it needed to access to complete the request.
+
+301 Moved Permanently: The requested resource has been permanently moved to a new URL, and the client should update its links.
+
+302 Found (or 307 Temporary Redirect): The requested resource has been temporarily moved to a different URL. The client should continue to use the original URL in the future.
+
+401 Unauthorized: The request is missing authentication credentials or the provided credentials are invalid.
+
+429 Too Many Requests: The user has sent too many requests in a given amount of time, indicating rate limiting.
+
+204 No Content: The request was successful, but there is no content to send in the response.
+
+406 Not Acceptable: The server cannot produce a response matching the list of acceptable values defined in the request's headers.
+
+409 Conflict: Indicates that the request could not be completed due to a conflict with the current state of the target resource.
+
+410 Gone: The requested resource is no longer available, and the client should not attempt to request it in the future.
