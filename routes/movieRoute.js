@@ -1,5 +1,5 @@
 const express = require('express');
-const { addMovies, getAllMovies } = require('../controllers/movieController');
+const { addMovies, getAllMovies, getMovieById, getMovieByUUID, filterByGenre, filterByYear, filterByQuality } = require('../controllers/movieController');
 const movieRoute = express.Router();
 
 
@@ -96,6 +96,130 @@ movieRoute.get('/getAllMovies' , getAllMovies)
  *              description: No movie found
  *          500:
  *              description: Server problems
+ */
+
+movieRoute.get('/getMovieById/:_id' , getMovieById)
+/**
+ * @swagger
+ * '/movie/getMovieById/{_id}':
+ *   get:
+ *     tags: [Movies]
+ *     summary: Find a movie by its Id
+ *     parameters:
+ *      - name: _id
+ *        in: path
+ *        description: The id of the movie
+ *        required: true
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *          application/json:
+ *           schema:
+ *               $ref: '#/components/schemas/movie'
+ *       404:
+ *         description: user not found
+ *       500:
+ *          description: Internal Server Error
+ */
+
+movieRoute.get('/getMovieByUUID/:uuid', getMovieByUUID)
+/**
+ * @swagger
+ * '/movie/getMovieByUUID/{uuid}':
+ *   get:
+ *     tags: [Movies]
+ *     summary: Find a movie by its uuid
+ *     parameters:
+ *      - name: uuid
+ *        in: path
+ *        description: The uuid of the movie
+ *        required: true
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *          application/json:
+ *           schema:
+ *               $ref: '#/components/schemas/movie'
+ *       404:
+ *         description: movie not found
+ *       500:
+ *          description: Internal Server Error
+ */
+
+movieRoute.get('/filterByGenre/:genre', filterByGenre)
+/**
+ * @swagger
+ * '/movie/filterByGenre/{genre}':
+ *   get:
+ *     tags: [Movies]
+ *     summary: Find a movie by its genre
+ *     parameters:
+ *      - name: genre
+ *        in: path
+ *        description: The genre of the movie
+ *        required: true
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *          application/json:
+ *           schema:
+ *               $ref: '#/components/schemas/movie'
+ *       404:
+ *         description: movie not found
+ *       500:
+ *          description: Internal Server Error
+ */
+movieRoute.get('/filterByYear/:year', filterByYear)
+/**
+ * @swagger
+ * '/movie/filterByYear/{year}':
+ *   get:
+ *     tags: [Movies]
+ *     summary: Find a movie by its year
+ *     parameters:
+ *      - name: year
+ *        in: path
+ *        description: The year of the movie
+ *        required: true
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *          application/json:
+ *           schema:
+ *               $ref: '#/components/schemas/movie'
+ *       404:
+ *         description: movie not found
+ *       500:
+ *          description: Internal Server Error
+ */
+
+movieRoute.get('/filterByQuality/:quantity', filterByQuality)
+/**
+ * @swagger
+ * '/movie/filterByQuality/{quantity}':
+ *   get:
+ *     tags: [Movies]
+ *     summary: Find a movie by its quantity
+ *     parameters:
+ *      - name: quantity
+ *        in: path
+ *        description: The quantity of the movie
+ *        required: true
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *          application/json:
+ *           schema:
+ *               $ref: '#/components/schemas/movie'
+ *       404:
+ *         description: movie not found
+ *       500:
+ *          description: Internal Server Error
  */
 
 module.exports = movieRoute
